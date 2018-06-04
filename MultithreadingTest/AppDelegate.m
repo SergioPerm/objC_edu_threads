@@ -22,9 +22,24 @@
     self.window.rootViewController = [[UIViewController alloc] init];
     [self.window makeKeyAndVisible];
 
+    [self performSelectorInBackground:@selector(testThread) withObject:nil];
+    
     return YES;
 }
 
+- (void) testThread {
+    
+    
+    @autoreleasepool {
+    
+        for (int i = 0; i < 20000; i++) {
+            NSLog(@"%d", i);
+        }
+    }
+    
+    
+    
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
